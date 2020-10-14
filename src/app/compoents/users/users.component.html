@@ -1,0 +1,56 @@
+<!-- <h1>Users</h1>
+<!-- <ul *ngIf="users.length>0 ; else NoUserTemp"> -->
+<!-- <ul *ngIf="Loaded && users?.length > 0">
+<li *ngFor='let user of users'> --> -->
+<!-- <mat-card>
+    <mat-card-content>
+    <div class="container">
+  <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <!-- <img [src]="user.image" alt=""/> -->
+<!-- <img src="{{user.image}}" alt=""/> -->
+<!-- <img bind-src="user.image" alt=""/>
+    </div>
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+    <h3>{{ user.firstName }} {{ user.lastName }}</h3>
+    <button type="button" class="btn btn-dark btn-sm"  (click)="ToggleUser(user)">Toggle</button>
+    <ul *ngIf="!user.hide && user.age &&user.address">
+      <li>Age: {{ user.age }}</li>
+      <li>Address: {{ user.address.street }} {{ user.address.city }}, {{ user.address.state }}</li>
+    </ul>
+</div>
+</div>
+</div>
+</mat-card-content>
+</mat-card> --> -->
+<h1>Users</h1>
+<!-- <ul *ngIf="users.length>0 ; else NoUserTemp"> -->
+<ul *ngIf="Loaded && users?.length > 0">
+  <li *ngFor='let user of users'>
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar></div>
+        <mat-card-title>{{ user.firstName }} {{ user.lastName }}</mat-card-title>
+
+      </mat-card-header>
+      <img [src]="user.image" alt="" />
+
+      <mat-card-content>
+        <ul *ngIf="!user.hide && user.age &&user.address">
+          <li>Age: {{ user.age }}</li>
+          <li>Address: {{ user.address.street }} {{ user.address.city }}, {{ user.address.state }}</li>
+        </ul>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="ToggleUser(user)">Toggle</button>
+
+      </mat-card-actions>
+    </mat-card>
+  </li>
+</ul>
+
+
+<!-- 
+<ng-template #NoUserTemp><h4>No user Found</h4></ng-template> -->
+<h4 *ngIf="users?.length==0">No User Found</h4>
+<h4 *ngIf=!Loaded>Loading users....</h4>
